@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hr_bot_app/cv%20creation%20page/choose_template.dart';
+import 'package:hr_bot_app/cv%20creation%20page/cv%20constructor/cv_constructor.dart';
 
 class CvCreationScreen extends StatelessWidget {
   const CvCreationScreen({super.key});
@@ -32,7 +33,7 @@ class CvCreationScreen extends StatelessWidget {
                               MaterialPageRoute(
                                   builder: (context) => ChooseTemplatePage()));
                         },
-                        child: Row(
+                        child: const Row(
                           children: [
                             Text("Create CV",
                                 style: TextStyle(
@@ -42,8 +43,8 @@ class CvCreationScreen extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 12),
+                    child: const Padding(
+                      padding: EdgeInsets.only(top: 12),
                       child: Row(
                         children: [
                           Text("Upload CV",
@@ -60,27 +61,32 @@ class CvCreationScreen extends StatelessWidget {
                     ),
                   ),
                   InkWell(
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 12),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CVConsctructorScreen()));
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.only(top: 12),
                       child: Row(
                         children: [
                           Text("Constructor",
-                              style:
-                                  TextStyle(fontFamily: 'Aldrich', fontSize: 40)),
+                              style: TextStyle(
+                                  fontFamily: 'Aldrich', fontSize: 40)),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 60,
                   ),
                   Center(
                     child: Container(
-                      color: Color(0xFFD9D9D9),
+                      color: const Color(0xFFD9D9D9),
                       height: 310,
                       width: 334,
-                      child: Center(
+                      child: const Center(
                         child: Text("CV Templates"),
                       ),
                     ),
