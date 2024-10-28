@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:hr_bot_app/cv%20creation%20page/content_fillment.dart';
+import 'package:hr_bot_app/cv%20creation%20page/content%20fillment/content_fillment.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ChooseTemplatePage extends StatefulWidget {
@@ -13,7 +13,7 @@ class ChooseTemplatePage extends StatefulWidget {
 class _ChooseTemplatePageState extends State<ChooseTemplatePage> {
   final controller = CarouselSliderController();
   int activeIndex = 0;
-  final cvImages = ['assets/cv1.jpg', 'assets/cv2.png', 'assets/cv3.png'];
+  final cvImages = ['assets/cv1.png', 'assets/cv2.png', 'assets/cv3.png'];
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class _ChooseTemplatePageState extends State<ChooseTemplatePage> {
               const SizedBox(
                 height: 24,
               ),
-              buildButtons()
+              buildButtons(activeIndex)
             ],
           ),
         ),
@@ -82,7 +82,7 @@ class _ChooseTemplatePageState extends State<ChooseTemplatePage> {
   void previous() =>
       controller.previousPage(duration: const Duration(milliseconds: 500));
 
-  Widget buildButtons() => Row(
+  Widget buildButtons(int index) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           GestureDetector(
@@ -104,7 +104,7 @@ class _ChooseTemplatePageState extends State<ChooseTemplatePage> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const ContentFillmentScreen()));
+                      builder: (context) => ContentFillmentScreen(index: index)));
             },
             child: Container(
               height: 40,

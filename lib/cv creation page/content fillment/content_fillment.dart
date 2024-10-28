@@ -1,7 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:hr_bot_app/cv%20creation%20page/content%20fillment/education_filling.dart';
+import 'package:hr_bot_app/cv%20creation%20page/resume_constructor.dart';
 
 class ContentFillmentScreen extends StatelessWidget {
-  const ContentFillmentScreen({super.key});
+  int index;
+  ContentFillmentScreen({
+    super.key,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,31 +31,38 @@ class ContentFillmentScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    buildContentLabel("Full name"),
-                    buildContentLabel("Education"),
-                    buildContentLabel("Experience"),
+                    buildContentLabel(context, "Full name", EducationFillmentScreen()),
+                    buildContentLabel(context, "Education", EducationFillmentScreen()),
+                    buildContentLabel(context, "Experience", EducationFillmentScreen()),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    buildContentLabel("Skills"),
-                    buildContentLabel("Languages"),
-                    buildContentLabel("Contacts"),
+                    buildContentLabel(context, "Skills", EducationFillmentScreen()),
+                    buildContentLabel(context, "Languages", EducationFillmentScreen()),
+                    buildContentLabel(context, "Contacts", EducationFillmentScreen()),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 32,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ResumeConstructor(
+                                  index: index,
+                                )));
+                  },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
+                      const Text(
                         "DONE",
                         style: TextStyle(fontFamily: 'Aldrich', fontSize: 50),
                       ),
@@ -69,16 +83,19 @@ class ContentFillmentScreen extends StatelessWidget {
   }
 }
 
-Widget buildContentLabel(String label) => GestureDetector(
-      onTap: () {},
+Widget buildContentLabel(BuildContext context, String label, Widget fillmentPage) => GestureDetector(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => fillmentPage));
+      },
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-        child: Text(
-          label,
-          style: TextStyle(fontWeight: FontWeight.w500),
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
         decoration: BoxDecoration(
             border: Border.all(color: Colors.black, width: 1),
             borderRadius: BorderRadius.circular(8)),
+        child: Text(
+          label,
+          style: const TextStyle(fontWeight: FontWeight.w500),
+        ),
       ),
     );

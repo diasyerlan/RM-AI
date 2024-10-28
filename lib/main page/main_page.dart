@@ -9,15 +9,15 @@ class MainPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 20),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 'Welcome User',
                 style: TextStyle(fontFamily: 'Aldrich', fontSize: 40),
               ),
-              Text(
+              const Text(
                 'Let us introduce you to Recruit ME AI',
                 style: TextStyle(fontFamily: 'Aldrich', fontSize: 29),
                 textAlign: TextAlign.center,
@@ -50,10 +50,10 @@ class MainPage extends StatelessWidget {
 }
 
 class MainPageCard extends StatelessWidget {
-  String title;
-  String description;
+  final String title;
+  final String description;
   final VoidCallback onCardTapped;
-  MainPageCard({super.key, required this.title, required this.description, required this.onCardTapped});
+  const MainPageCard({super.key, required this.title, required this.description, required this.onCardTapped});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class MainPageCard extends StatelessWidget {
       onTap: onCardTapped,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
-        child: Container(
+        child: SizedBox(
           height: 130,
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -83,11 +83,11 @@ class MainPageCard extends StatelessWidget {
                         children: [
                           Text(
                             title,
-                            style: TextStyle(fontSize: 22),
+                            style: const TextStyle(fontSize: 22),
                           ),
                           Text(
                             description,
-                            style: TextStyle(fontSize: 12),
+                            style: const TextStyle(fontSize: 12),
                           ),
                         ],
                       ),
