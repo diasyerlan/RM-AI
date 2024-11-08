@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "371838894834",
+    "project_id": "rmai-7dba7",
+    "storage_bucket": "rmai-7dba7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371838894834:android:4ac9086802bf6e450f466b",
+        "android_client_info": {
+          "package_name": "com.example.hr_bot_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALJ95a0Yls7OIn0oAVER1h8foacfz1fiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

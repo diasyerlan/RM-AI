@@ -1,15 +1,22 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatelessWidget {
   final Function(int) onTap;
   const MainPage({super.key, required this.onTap});
 
+  void signOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [IconButton(onPressed: signOut, icon: Icon(Icons.logout))],
+      ),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -26,25 +33,22 @@ class MainPage extends StatelessWidget {
                 title: 'Resume Creation',
                 description:
                     'This is resume constructor service that aimed to create Resume in the most efficient way',
-                    onCardTapped: () => onTap(1),
+                onCardTapped: () => onTap(1),
               ),
               MainPageCard(
-                title: 'Dream Job AI',
-                description:
-                    'This service creates the path of your dream job based on the profession you are asking',
-                    onCardTapped: () => onTap(2)
-                    
-              ),
+                  title: 'Dream Job AI',
+                  description:
+                      'This service creates the path of your dream job based on the profession you are asking',
+                  onCardTapped: () => onTap(2)),
               MainPageCard(
-                title: 'Vacancy Searcher',
-                description:
-                    'This service provides opportunity to find and apply thought out different platforms',
-                    onCardTapped: () => onTap(3)
-              )
+                  title: 'Vacancy Searcher',
+                  description:
+                      'This service provides opportunity to find and apply thought out different platforms',
+                  onCardTapped: () => onTap(3))
             ],
           ),
         ),
-      ),
+    
     );
   }
 }
@@ -53,7 +57,11 @@ class MainPageCard extends StatelessWidget {
   final String title;
   final String description;
   final VoidCallback onCardTapped;
-  const MainPageCard({super.key, required this.title, required this.description, required this.onCardTapped});
+  const MainPageCard(
+      {super.key,
+      required this.title,
+      required this.description,
+      required this.onCardTapped});
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +103,8 @@ class MainPageCard extends StatelessWidget {
                         children: [
                           const Text(
                             'Start',
-                            style: TextStyle(fontFamily: 'Aldrich', fontSize: 29),
+                            style:
+                                TextStyle(fontFamily: 'Aldrich', fontSize: 29),
                           ),
                           Image.asset(
                             'assets/start.png',
